@@ -1,27 +1,37 @@
-let tamannoArchivo, unidadArchivo, velocidaDescarga, unidadDescarga;
-//Ejemplo
-(unidadArchivo = "gb"), (unidadDescarga = "kb");
-(tamannoArchivo = 3), (velocidaDescarga = 250);
-if (unidadArchivo == "gb") {
-  tamannoArchivo = tamannoArchivo * 1048576;
-} else if (tamannoArchivo == "mg") {
-  tamannoArchivo = tamannoArchivo * 1024;
-}
-// console.log(tamannoArchivo);
+let tamannoArchivo = 2,
+  unidadArchivo = "gb";
+let velocidaDescarga = 200,
+  unidadDescarga = "kb";
+let tiempoSegundos, resultado;
 
-if (unidadDescarga == "gb") {
-  velocidaDescarga = velocidaDescarga * 1048576;
-} else if (unidadDescarga == "mg") {
-  velocidaDescarga = velocidaDescarga * 1024;
+function tiempo_demora() {
+  if (unidadArchivo == "gb") {
+    tamannoArchivo = tamannoArchivo * 1048576;
+  } else if (unidadArchivo == "mg") {
+    tamannoArchivo = tamannoArchivo * 1024;
+  }
+  if (unidadDescarga == "gb") {
+    velocidaDescarga = velocidaDescarga * 1048576;
+  } else if (unidadDescarga == "mg") {
+    velocidaDescarga = velocidaDescarga * 1024;
+  }
+  tiempoSegundos = tamannoArchivo / velocidaDescarga;
 }
-let tiempoDescarga = tamannoArchivo / velocidaDescarga / 60 / 60;
-if (tiempoDescarga < 1) {
-  tiempoDescarga = tiempoDescarga * 60 * 60;
-  console.log(
-    "El tiempo estimado de descarga es de: " + tiempoDescarga + " segundos"
-  );
-} else {
-  console.log(
-    "El tiempo estimado de descarga es de: " + tiempoDescarga + " horas"
-  );
+
+tiempo_demora();
+
+function funResultado() {
+  if (tiempoSegundos < 60) {
+    resultado = tiempoSegundos + " segundos";
+  } else if (tiempoSegundos >= 60 && tiempoSegundos < 3600) {
+    tiempoSegundos = tiempoSegundos / 60;
+    resultado = tiempoSegundos + " minutos";
+  } else if (tiempoSegundos >= 3600) {
+    tiempoSegundos = tiempoSegundos / 60 / 60;
+    resultado = tiempoSegundos + " horas";
+  }
 }
+
+funResultado();
+
+console.log(resultado);
