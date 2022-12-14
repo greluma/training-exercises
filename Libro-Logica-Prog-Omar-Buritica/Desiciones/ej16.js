@@ -1,12 +1,11 @@
-let num = 9845,
-  aux = num;
+//!Mal
+/**
+ * *16.	Leer un número entero de tres dígitos y determinar si al menos dos de sus tres dígitos son iguales.
+ */
 
-let lista = [];
-while (aux != 0) {
-  lista.push(aux % 10);
-  aux = Math.trunc(aux / 10);
+const numUsu = "323";
+let list = [];
+let cont = 0;
+for (const iterator of numUsu) {
 }
-
-console.log(lista);
-
-//falta
+console.log(list);

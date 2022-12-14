@@ -1,39 +1,28 @@
-//mal
-
-let num1 = 87;
-let num2 = 45;
-
-let list1 = [],
-  list2 = [],
-  validar = [];
-
-const dosDigitos = (num) => {
-  if (num < 10 || num > 99) return false;
-  else return true;
-};
-
-validar.push(num1);
-validar.push(num2);
-console.log(validar.length);
-
-for (const iterator of validar) {
-  if (!dosDigitos(iterator)) {
-    console.log(`${iterator} no es valido`);
-  } else {
-    list1.push(Math.round(iterator / 10 - (iterator % 10) / 10));
-    list1.push(iterator % 10);
+const listDigs = (num) => {
+  let listaAux = [];
+  let aux = num;
+  while (aux != 0) {
+    listaAux.push(aux % 10);
+    aux = Math.trunc(aux / 10);
   }
-}
+  return listaAux.reverse();
+};
+let num1 = 123456789,
+  num2 = 87654321;
+let list1 = listDigs(num1);
+let list2 = listDigs(num2);
+// console.log(list1);
+// console.log(list2);
 
-console.log(list1);
-for (const iterator of list1) {
-  list2.push(iterator);
-  for (const iterator2 of list2) {
-    if (list2[list2.length - 1] == iterator) {
-      console.log(`Num ${iterator} se repite`);
+let listComun = [];
+for (const numLis1 of list1) {
+  for (const numLis2 of list2) {
+    if (numLis1 == numLis2) {
+      if (listComun.indexOf(numLis1) == -1) {
+        listComun.push(numLis1);
+      }
     }
   }
 }
 
-console.log(list2);
-console.log(list2[list2.length - 1]);
+console.log(`Los numeros que se repiten en ${num1} y ${num2} son ${listComun}`);
